@@ -5,7 +5,7 @@ use App\Models\clientes;
 
 use Illuminate\Http\Request;
 
-class controlador_prueba extends Controller
+class controlador_clientes extends Controller
 {
     public function index(){
         $clientes=Clientes::all()

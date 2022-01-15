@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\controlador_prueba;
+use App\Http\Controllers\controlador_clientes;
+use App\Http\Controllers\controlador_productos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('prueba/index', [controlador_prueba::class,'index'])->name('prueba.index');
+//Rutas Clientes
+Route::get('prueba/index', [controlador_clientes::class,'index'])->name('prueba.index');
 Route::view('prueba/form_clientes','paginas.insert_clientes')->name('form_cliente');
-Route::post('prueba/insert_cliente',[controlador_prueba::class, 'insert_cliente'])->name('insert_cliente');
-Route::get('prueba/form_update_cliente/{cliente}', [controlador_prueba::class, 'form_update_cliente'])->name('form_update_cliente');
-Route::post('prueba/update_cliente/{cliente}', [controlador_prueba::class, 'update_cliente'])->name('update_cliente');
-Route::get('prueba/delete_cliente/{cliente}', [controlador_prueba::class, 'delete_cliente'])->name('delete_cliente');
+Route::post('prueba/insert_cliente',[controlador_clientes::class, 'insert_cliente'])->name('insert_cliente');
+Route::get('prueba/form_update_cliente/{cliente}', [controlador_clientes::class, 'form_update_cliente'])->name('form_update_cliente');
+Route::post('prueba/update_cliente/{cliente}', [controlador_clientes::class, 'update_cliente'])->name('update_cliente');
+Route::get('prueba/delete_cliente/{cliente}', [controlador_clientes::class, 'delete_cliente'])->name('delete_cliente');
+
+//Rutas productos
+Route::get('productos/select_productos', [controlador_productos::class, 'select_productos'])->name('select_productos');
+Route::get('productos/insert_producto/', [controlador_productos::class, 'form_insert_producto'])->name('insert_producto');
+Route::get('productos/form_update_producto/{producto}', [controlador_productos::class, 'form_update_producto'])->name('form_update_producto');
+
 
 Route::get('/', function () {
     //return view('welcome');
