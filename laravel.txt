@@ -1,0 +1,55 @@
+//Instalar laravel, previamente debe estar instalado xampp y composer
+composer global require laravel/installer
+
+
+//crear nuevo proyecto laravel 
+laravel new "nombre de proyecto"
+
+
+//Levantar servidor
+php artisan serve 
+
+//Crear un controlador
+php artisan make:controller <nombre de controlador>
+
+//crear modelos
+php artisan make:controller <nombre de modelo>
+
+
+//----------------------------Migraciones
+//Las migraciones son un sistema de control de versiones para base de datos
+
+//Migrar las tablas a la base de datos
+	php artisan migrate
+
+//Crear una nueva migracion
+	php artisan make:migration "nombre de tabla"
+	//o se puede utilizar esta clausula que crea toda la plantilla
+	php artisan make:migration create_"nombre de tabla"_table
+	//ejemplo: migration create_cursos_table
+
+//Deshacer un cambio de una tabla
+	php artisan migrate:rollback //esta sentencia elimina las tablas creadas en el lote mas reciente
+	//importante saber manejar los lotes en la tabla migraciones
+	// porque si no se borraran todas las tablas de la base de datos
+
+//Eliminar las tablas creadas y volver a migrarlas
+	php artisan migrate:fresh
+	//Elimina todas las tablas de la base de datos y luego, realiza las migraciones de nuevo
+	php artisan migrate:refresh
+	//Ejecuta el metodo down de cada migracion, eliminando la tabla y posterior realiza las migraciones
+	//de nuevo.
+
+//para agregar una columna a una tabla no se debe usar esto: php artisan migrate:fresh
+//Porque destruiria todas las tablas con sus registros
+
+//Agregar una columna a una tabla 
+	php artisan make:migration add_"nombre columna"_to_"nombre tabla"_table
+	Ej: php artisan make:migration add_avatar_to_prueba_table
+
+
+//Modificar el tamaño de una columna 
+	ejecutar en la terminal: composer require doctrine/dbal
+	//posterior crear una migracion
+	php artisan make:migration add_"nombre columna"_to_"nombre tabla"_table
+	ej:php artisan make:migration cambiar_tamanio_to_prueba_table	
